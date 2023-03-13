@@ -27,6 +27,7 @@ public class GManager : MonoBehaviour
 
     public void ToDark(bool active = true)
     {
+        //camera.transform.position.Set(transform.position.x, transform.position.y, transform.position.z - 6f);
         if (dirLight)
             dirLight.SetActive(!active);
         if (spotLight)
@@ -42,7 +43,10 @@ public class GManager : MonoBehaviour
 
     public void ToLight()
     {
+        //objects.transform.position.Set(transform.position.x, transform.position.y, 16f);
         ToDark(false);
+        //objects.transform.position.Set(0f, -4f, -2f);
+        objects.transform.position = new Vector3(0f, 4f, -2f);
     }
 
     public void SwitchEnv()
