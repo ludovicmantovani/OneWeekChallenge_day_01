@@ -5,6 +5,8 @@ using UnityEngine;
 public class GManager : MonoBehaviour
 {
     [SerializeField] private GameObject objects = null;
+    [SerializeField] private GameObject dirLight = null;
+    [SerializeField] private GameObject spotLight = null;
     [SerializeField] private bool isDarkEnv = false;
 
     private Transform ghostObject = null;
@@ -23,6 +25,11 @@ public class GManager : MonoBehaviour
 
     public void ToDark(bool active = true)
     {
+        if (dirLight)
+            dirLight.SetActive(!active);
+        if (spotLight)
+            spotLight.SetActive(active);
+
         isDarkEnv = active;
         for (int i = 0; i < objects.transform.childCount; i++)
         {
@@ -36,12 +43,17 @@ public class GManager : MonoBehaviour
         ToDark(false);
     }
 
-
     public void SwitchEnv()
     {
         if (isDarkEnv)
             ToLight();
         else
             ToDark();
+    }
+
+
+    public void endOfGame(bool win = true)
+    {
+        Debug.Log("end of game : win ? " + win);
     }
 }

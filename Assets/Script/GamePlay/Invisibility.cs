@@ -5,12 +5,13 @@ using UnityEngine;
 [RequireComponent(typeof(MeshRenderer))]
 public class Invisibility : MonoBehaviour
 {
-    [SerializeField] private Material clasicMaterial = null;
-    [SerializeField] private Material ghostMaterial = null;
     [SerializeField] private bool isDarkEnv = false;
     [SerializeField] private bool isGhost = false;
 
     private MeshRenderer _meshRenderer = null;
+
+    public bool IsDarkEnv { get => isDarkEnv;}
+    public bool IsGhost { get => isGhost;}
 
     void Start()
     {
