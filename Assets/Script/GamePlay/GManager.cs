@@ -19,6 +19,7 @@ public class GManager : MonoBehaviour
             int randomChildIndex = Random.Range(0, objects.transform.childCount);
             ghostObject = objects.transform.GetChild(randomChildIndex);
             ghostObject.gameObject.GetComponent<Invisibility>().SetGhost();
+            ghostObject.gameObject.name += " ghost";
             ToDark();
         }
     }

@@ -17,23 +17,20 @@ public class SelectObject : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 
     void IPointerEnterHandler.OnPointerEnter(PointerEventData eventData)
     {
-        print("MouseEnter to " + gameObject.name);
         if (_animator && _invisibility && !_invisibility.IsDarkEnv)
             _animator.SetBool("scale", true);
     }
     public void OnPointerExit(PointerEventData eventData)
     {
-        print("MouseExit to " + gameObject.name);
         if (_animator && _invisibility && !_invisibility.IsDarkEnv)
             _animator.SetBool("scale", false);
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        print("MouseDown to " + gameObject.name);
         if (_animator && _invisibility && !_invisibility.IsDarkEnv)
             _animator.SetBool("scale", false);
-        if (_invisibility && gManager)
+        if (_invisibility && !_invisibility.IsDarkEnv && gManager)
             gManager.endOfGame(_invisibility.IsGhost);
     }
 }
