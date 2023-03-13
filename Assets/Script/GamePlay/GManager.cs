@@ -7,6 +7,7 @@ public class GManager : MonoBehaviour
     [SerializeField] private GameObject objects = null;
     [SerializeField] private GameObject dirLight = null;
     [SerializeField] private GameObject spotLight = null;
+    [SerializeField] private ResultCanvasInfo resultCanvasInfo = null;
     [SerializeField] private bool isDarkEnv = false;
 
     private Transform ghostObject = null;
@@ -56,5 +57,10 @@ public class GManager : MonoBehaviour
     public void endOfGame(bool win = true)
     {
         Debug.Log("end of game : win ? " + win);
+        if (resultCanvasInfo)
+        {
+            resultCanvasInfo.SetData(win);
+            resultCanvasInfo.gameObject.SetActive(true);
+        }
     }
 }
